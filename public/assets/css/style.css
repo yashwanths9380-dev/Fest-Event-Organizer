@@ -1,0 +1,272 @@
+/* ==========================================================================
+   Fest Event Organizer — "Deep Teal & Charcoal" professional identity
+   ==========================================================================
+   A corporate, no-gradient identity for this project -- flat fills
+   throughout, no gradients anywhere.
+
+   Palette
+     --teal     #0F4C4C  brand anchor (nav band, structure)          dark #0B3838
+     --cyan     #0E7490  energy / primary action, links              dark #0B5A70
+     --ink      #16211F  near-black charcoal — headings, dark surfaces
+     --canvas   #F6FAF9  barely-tinted page ground
+     --line     #DCE9E7  teal-tinted hairline
+     --slateink #56675F  muted sage-grey for secondary text
+     --gold     #F59E0B  marquee amber — prizes, winners, certificates
+     --mint     #10B981  approved / confirmed      --rose #F43F5E  rejected / alert
+
+   Type
+     Space Grotesk  display — headings, wordmark, stat values
+     Inter          body — prose, forms, tables
+     JetBrains Mono utility — e-pass codes, schedule times, capacity numerics
+
+   Discipline
+     Every surface is flat — solid fills, no gradients anywhere, including
+     the nav band and the e-pass/certificate seal. Amber means "prize".
+     Mint/rose mean "approved/rejected". Colour carries state; it is never
+     applied for mood alone.
+
+   Signature
+     .epass-card — the e-pass drawn as a real perforated ticket (punched side
+     notches, dashed tear line, mono code). It is the artifact the whole app
+     exists to produce, so it gets the one bold moment; everything else stays
+     quiet.
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+h1, h2, h3, h4, .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.015em;
+}
+
+:focus-visible { outline: 2px solid #0E7490; outline-offset: 2px; border-radius: 4px; }
+
+/* ---- nav ------------------------------------------------------------- */
+.nav-link { color: rgba(255,255,255,0.75); transition: background .15s, color .15s; }
+.nav-link:hover { color: #fff; background: rgba(255,255,255,0.12); }
+.nav-link-active { color: #fff; background: rgba(255,255,255,0.18); font-weight: 700; }
+
+.btn-ghost-dark {
+    background: rgba(255,255,255,0.14); color: #fff;
+    border: 1px solid rgba(255,255,255,0.28); border-radius: 8px;
+    padding: 0.4rem 0.9rem; font-weight: 600; font-size: 0.82rem; cursor: pointer;
+}
+.btn-ghost-dark:hover { background: rgba(255,255,255,0.24); }
+
+/* Mobile nav: hamburger + collapsible panel, so links never get clipped
+   or stranded in an undiscoverable horizontal-scroll strip on a narrow screen. */
+.nav-toggle-btn {
+    display: flex; flex-direction: column; justify-content: center; gap: 4px;
+    width: 34px; height: 34px; background: none; border: none; cursor: pointer;
+    flex: none;
+}
+.nav-toggle-btn span { display: block; width: 20px; height: 2px; background: #fff; margin: 0 auto; border-radius: 1px; }
+.nav-panel { border-top: 1px solid rgba(255,255,255,0.15); }
+.nav-panel .nav-link { display: block; }
+
+/* ---- cards ------------------------------------------------------------- */
+.card {
+    background: #fff; border: 1px solid #DCE9E7;
+    border-radius: 14px; padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+}
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.card-head h2 { font-size: 1.05rem; font-weight: 600; }
+
+.stat-tile {
+    background: #fff; border: 1px solid #DCE9E7; border-radius: 12px;
+    padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.15rem;
+    position: relative; overflow: hidden;
+}
+/* A hairline of fest colour on each tile — the only place the brand touches
+   the dashboard grid, so the numbers stay the loudest thing on the page. */
+.stat-tile::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: #DCE9E7;
+}
+.stat-tile .stat-value {
+    font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem;
+    font-weight: 700; color: #16211F; font-variant-numeric: tabular-nums;
+}
+.stat-tile .stat-label { font-size: 0.76rem; color: #56675F; font-weight: 600; letter-spacing: 0.01em; }
+.stat-tile-accent::before { background: #0F4C4C; }
+.stat-tile-accent .stat-value { color: #0F4C4C; }
+.stat-tile-alert::before { background: #F43F5E; }
+.stat-tile-alert .stat-value { color: #F43F5E; }
+.stat-tile-gold::before { background: #F59E0B; }
+.stat-tile-gold .stat-value { color: #B45309; }
+
+/* ---- buttons ------------------------------------------------------------ */
+.btn-primary {
+    background: #0E7490; color: #fff; border-radius: 9px;
+    padding: 0.55rem 1.15rem; font-weight: 600; font-size: 0.88rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+    border: none; cursor: pointer; transition: background .15s, transform .15s;
+}
+.btn-primary:hover { background: #0B5A70; }
+.btn-primary:active { transform: translateY(1px); }
+.btn-accent {
+    background: #F59E0B; color: #3B2205; border-radius: 9px;
+    padding: 0.55rem 1.15rem; font-weight: 700; font-size: 0.88rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+    border: none; cursor: pointer;
+}
+.btn-accent:hover { background: #D97706; color: #fff; }
+.btn-secondary {
+    background: #fff; color: #16211F; border: 1px solid #DCE9E7; border-radius: 9px;
+    padding: 0.55rem 1.15rem; font-weight: 600; font-size: 0.88rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem; cursor: pointer;
+    transition: border-color .15s, color .15s;
+}
+.btn-secondary:hover { border-color: #0F4C4C; color: #0F4C4C; }
+.btn-danger {
+    background: #F43F5E; color: #fff; border-radius: 9px; border: none; cursor: pointer;
+    padding: 0.5rem 1rem; font-weight: 600; font-size: 0.82rem;
+}
+.btn-danger:hover { background: #E11D48; }
+.btn-sm { padding: 0.32rem 0.7rem; font-size: 0.78rem; }
+.btn-primary:disabled, .btn-accent:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ---- forms ---------------------------------------------------------------*/
+.field-label { display:block; font-size: 0.8rem; font-weight: 600; color: #16211F; margin-bottom: 0.3rem; }
+.field-input, .field-textarea, .field-select {
+    width: 100%; border: 1px solid #DCE9E7; border-radius: 9px;
+    padding: 0.55rem 0.75rem; font-size: 0.9rem; background: #fff; color: #16211F;
+    font-family: 'Inter', sans-serif;
+}
+.field-input:focus, .field-textarea:focus, .field-select:focus {
+    outline: 2px solid #0E7490; outline-offset: 1px; border-color: #0E7490;
+}
+.field-error { color: #E11D48; font-size: 0.78rem; margin-top: 0.25rem; }
+.field-hint { color: #56675F; font-size: 0.76rem; margin-top: 0.25rem; }
+
+/* ---- badges/pills --------------------------------------------------------*/
+/* Each badge colour is a state, not a decoration: gold = awaiting a decision
+   or a prize, mint = approved/confirmed, rose = rejected, slate = dormant. */
+.badge { display:inline-flex; align-items:center; gap: .3rem; padding: 0.2rem 0.65rem; border-radius: 999px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.01em; text-transform: capitalize; }
+.badge-cyan   { background: #E8F6F9; color: #0B5A70; }
+.badge-teal   { background: #EAF5F4; color: #0B3838; }
+.badge-mint   { background: #ECFDF5; color: #047857; }
+.badge-gold   { background: #FFFBEB; color: #B45309; }
+.badge-rose   { background: #FFF1F2; color: #E11D48; }
+.badge-slate  { background: #F0F4F3; color: #56675F; }
+
+/* ---- event/fest cards --------------------------------------------------*/
+.event-card {
+    background: #fff; border: 1px solid #DCE9E7; border-radius: 14px; padding: 1.25rem;
+    border-top: 3px solid #0F4C4C;
+    transition: box-shadow .18s, transform .18s;
+}
+.event-card:hover { box-shadow: 0 14px 28px -20px rgba(15,76,76,0.35); transform: translateY(-2px); }
+
+/* The top edge carries the event's category, so a fest page of 14 events is
+   scannable by type before you read a single title. Paired with the matching
+   badge colour below -- the same four hues, used consistently. */
+.event-card--competition { border-top-color: #0E7490; }
+.event-card--workshop    { border-top-color: #0F4C4C; }
+.event-card--show        { border-top-color: #F59E0B; }
+.event-card--seminar     { border-top-color: #56675F; }
+
+.capacity-bar { height: 6px; border-radius: 999px; background: #F0F4F3; overflow: hidden; }
+.capacity-bar-fill { height: 100%; background: #0F4C4C; }
+.capacity-bar-fill.full { background: #F43F5E; }
+
+/* Times and counts read as data, not prose. */
+.data-table td .tabular, .capacity-num { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+
+/* ---- empty state ----------------------------------------------------------*/
+.empty-state { color: #56675F; font-size: 0.9rem; padding: 1rem 0; text-align: center; }
+
+/* ---- table ------------------------------------------------------------- */
+.table-scroll { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+.data-table th { text-align: left; padding: 0.6rem 0.7rem; color: #56675F; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #DCE9E7; }
+.data-table td { padding: 0.65rem 0.7rem; border-bottom: 1px solid #F0F4F3; vertical-align: middle; }
+.data-table tr:last-child td { border-bottom: none; }
+
+/* ---- alerts ---------------------------------------------------------------*/
+.alert { padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.85rem; font-weight: 500; margin-bottom: 1rem; }
+.alert-error { background: #FFF1F2; color: #BE123C; border: 1px solid rgba(244,63,94,0.28); }
+.alert-success { background: #ECFDF5; color: #047857; border: 1px solid rgba(16,185,129,0.28); }
+
+/* ---- auth hero (login/register) -------------------------------------- */
+.auth-hero { background: #EAF5F4; }
+.auth-logo-badge {
+    width: 3.5rem; height: 3.5rem; border-radius: 0.75rem;
+    background: #0F4C4C; color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+}
+
+/* ---- e-pass ticket — the signature element ----------------------------- */
+/* Drawn as a real pass: solid stock, a dashed tear line, and two punched
+   notches. The notches are discs in the page's own canvas colour centred on
+   the card's edges — the card clips their outer half, so what's left reads as
+   a hole punched through the ticket. Driven by the stub's real position in the
+   flow rather than a guessed percentage, so it stays aligned if the content
+   above it grows. */
+.epass-card {
+    background: #0B3838;
+    color: #fff;
+    border-radius: 16px; padding: 1.75rem; position: relative; overflow: hidden;
+}
+/* Fine dot texture — the security tint on a printed pass. */
+.epass-card::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.14) 1px, transparent 1px);
+    background-size: 14px 14px;
+}
+.epass-card > * { position: relative; z-index: 1; }
+
+.epass-stub {
+    margin: 1.25rem -1.75rem -1.75rem;
+    padding: 1.5rem 1.75rem 1.75rem;
+    border-top: 2px dashed rgba(255,255,255,0.40);
+    position: relative;
+}
+.epass-stub::before, .epass-stub::after {
+    content: ''; position: absolute; top: -15px;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: #F6FAF9; pointer-events: none;
+}
+.epass-stub::before { left: -15px; }
+.epass-stub::after  { right: -15px; }
+
+.epass-code {
+    font-family: 'JetBrains Mono', monospace; letter-spacing: 0.16em;
+    font-size: 1.5rem; font-weight: 700;
+}
+
+/* ---- certificate --------------------------------------------------------- */
+.certificate-card {
+    background: #fff; border: 3px solid #F59E0B; border-radius: 6px;
+    padding: 3rem 2.5rem; text-align: center; position: relative;
+    box-shadow: inset 0 0 0 1px #FDE68A, inset 0 0 0 9px #fff, inset 0 0 0 10px #FEF3C7;
+}
+
+/* ---- demo credentials (login) ------------------------------------------- */
+.demo-creds { margin-top: 1.25rem; font-size: 0.8rem; color: #56675F; }
+.demo-creds summary { cursor: pointer; font-weight: 600; color: #0B3838; list-style: none; }
+.demo-creds summary::-webkit-details-marker { display: none; }
+.demo-creds summary::before { content: '\25B8'; display: inline-block; margin-right: 0.4rem; transition: transform .15s; }
+.demo-creds[open] summary::before { transform: rotate(90deg); }
+.demo-creds table { width: 100%; border-collapse: collapse; margin-top: 0.6rem; }
+.demo-creds td, .demo-creds th { padding: 0.3rem 0.4rem; border-bottom: 1px solid #DCE9E7; text-align: left; }
+.demo-creds th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: #56675F; }
+.demo-creds code { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; }
+
+/* ---- error pages ----------------------------------------------------------*/
+.error-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #F6FAF9; }
+.error-card { text-align: center; background: #fff; border: 1px solid #DCE9E7; border-radius: 16px; padding: 3rem 2.5rem; max-width: 420px; }
+.error-card h1 {
+    font-family: 'Space Grotesk', sans-serif; font-size: 3.4rem; font-weight: 700;
+    color: #0F4C4C;
+}
+.error-card.error-card-alert h1 { color: #E11D48; }
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .event-card:hover { transform: none; }
+}
